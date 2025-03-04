@@ -117,9 +117,9 @@ fun showMonkeys(monkeyList: List<String>) {
     }
 }
 
-fun getString(prompt: String) : String {
+fun getString(prompt: String): String {
     var userInput: String
-    while(true) {
+    while (true) {
         print(prompt)
 
         userInput = readln()
@@ -134,17 +134,15 @@ fun getString(prompt: String) : String {
  */
 fun getNewMonkey(monkeyList: MutableList<String>): String {
     // Ask the user for a monkey name (no blanks)
-    var userInput = getString(
-        prompt = "Add a new monkey: )
-                // Add the name to the list
-                monkeyList.add(userInput)
-//        while (true) {
-//            print(monkeyList)
-//
-//            userInput = readln()
-//            if (userInput.isNotBlank()) break
-//        }
-//    return (userInput)
+    var userInput = getString("Enter a new moneky: ")
+    // Add the name to the list
+    monkeyList.add(userInput)
+    while (true) {
+        print(monkeyList)
+        
+        if (userInput.isNotBlank()) break
+    }
+    return (userInput)
     // Show some feedback
 }
 
