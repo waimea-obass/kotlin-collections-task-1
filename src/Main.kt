@@ -3,8 +3,8 @@
  * Kotlin Collections Task 1 - Monkeys
  *
  *    __v__
- *   ( o o )   __v__
- *    (---)   ( o o )
+ *   ( o^o )   __v__
+ *    (---)   ( o^o )
  *             (---)
  *
  * Oh, no! There are monkeys loose in your house. You
@@ -39,7 +39,7 @@ fun main() {
     check(longestMonkeyName(monkeys) == "Jimmy")
 
     // Adding Monkeys --------------------------------------------
-
+//    monkeyList.add(
     // Ask the user for three new monkey names and add to the list
     for (i in 1..3) {
         getNewMonkey(monkeys)
@@ -77,7 +77,7 @@ fun main() {
     println("Longest Name: ${longestMonkeyName(monkeys)}")
 
     // Check the list
-    check(monkeys.count() == 0)
+    check(monkeys.count() == 4)
     check(monkeyCounter(monkeys) == "There are 4 monkeys!")
 
 
@@ -92,7 +92,7 @@ fun main() {
     println("Longest Name: ${longestMonkeyName(monkeys)}")
 
     // Check the list
-    check(monkeys.count() == 4)
+    check(monkeys.isEmpty())
     check(monkeyCounter(monkeys) == "There are no monkeys!")
 
 }
@@ -122,19 +122,19 @@ fun showMonkeys(monkeyList: List<String>) {
  * Get a monkey name from the user (no blanks allowed)
  * and then add it to the given monkey list
  */
-fun getNewMonkey(monkeyList: MutableList<String>) {
+fun getNewMonkey(monkeyList: MutableList<String>): String {
     // Ask the user for a monkey name (no blanks)
     var userInput: String
     // Add the name to the list
     while (true) {
-        print(monkeys)
+        print(monkeyList)
 
         userInput = readln()
         if (userInput.isNotBlank()) break
     }
     return (userInput)
     // Show some feedback
-    println("Added new monkey: NAME HERE")
+    println("Added new monkey: $userInput ")
 }
 
 
@@ -145,16 +145,23 @@ fun getNewMonkey(monkeyList: MutableList<String>) {
  * If there are no monkeys, it should return:
  *   There are no monkeys!
  */
-fun monkeyCounter(list: MutableList<String>): String {
+fun monkeyCounter(monkeyList: List<String>): String {
     // return the number of monkeys in the list
-    return (userInput)
+    if (monkeyList.isEmpty()) {
+        return " There are no monkeys!"
+    }
+    var monkeyNumber = 0
+    for (i in monkeyList) {
+        monkeyNumber++
+    }
+    return " There are $monkeyNumber monkeys!"
 }
 
 
 /**
  * Returns the name of the monkey
  */
-fun longestMonkeyName(list: List<String>): String {
+fun longestMonkeyName(monkeyList: List<String>): String {
     // Loop through the list and find the longest name
     return "MONKEY NAME HERE"   // FIXME!
 }
@@ -164,9 +171,9 @@ fun longestMonkeyName(list: List<String>): String {
  * Removes the first monkey from the given list
  * if the list is not empty
  */
-fun deleteFirstMonkey(monkeys: MutableList<String>) {
+fun deleteFirstMonkey(monkeyList: MutableList<String>) {
     // Remove the first one from the list
-
+    monkeyList.removeAt(0)
     // Show some feedback
     println("Removing monkey: NAME HERE")
 }
