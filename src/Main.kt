@@ -81,10 +81,10 @@ fun main() {
     check(monkeyCounter(monkeys) == "There are 4 monkeys!")
 
 
-    // Try to delete 10 monkeys
-//    for (i in 1..10) {
-//        deleteFirstMonkey(monkeys)
-//    }
+//     Try to delete 10 monkeys
+    for (i in 1..10) {
+        deleteFirstMonkey(monkeys)
+    }
 
     // Show the monkeys
     showMonkeys(monkeys)
@@ -134,12 +134,12 @@ fun getString(prompt: String): String {
  */
 fun getNewMonkey(monkeyList: MutableList<String>): String {
     // Ask the user for a monkey name (no blanks)
-    var userInput = getString("Enter a new moneky: ")
+    val userInput = getString("Enter a new monkey: ")
     // Add the name to the list
     monkeyList.add(userInput)
     while (true) {
         print(monkeyList)
-        
+
         if (userInput.isNotBlank()) break
     }
     return (userInput)
@@ -157,7 +157,12 @@ fun getNewMonkey(monkeyList: MutableList<String>): String {
 fun monkeyCounter(monkeyList: List<String>): String {
 //     return the number of monkeys in the list
     val numMonkeys = monkeyList.size
-    return "There are $numMonkeys monkeys!"
+    if (numMonkeys > 0) {
+        return "There are $numMonkeys monkeys!"
+    } else {
+        return "There are no monkeys!"
+    }
+
 }
 
 
@@ -184,9 +189,11 @@ fun longestMonkeyName(monkeyList: List<String>): String {
  */
 fun deleteFirstMonkey(monkeyList: MutableList<String>) {
     // Remove the first one from the list
-    monkeyList.removeAt(0)
-    // Show some feedback
-    println("Removing monkey: ")
+    if (monkeyList.isNotEmpty()) {
+        val monkeyDelete = monkeyList.removeFirst()
+        // Show some feedback
+        println("Removing Monkey $monkeyDelete")
+    }
 }
 
 
@@ -195,9 +202,13 @@ fun deleteFirstMonkey(monkeyList: MutableList<String>) {
  * if the list is not empty
  */
 fun deleteLastMonkey(monkeyList: MutableList<String>) {
-    // Remove the last one from the list
-//    monkeyList.removeAt(monkeys.size - 1)
+//   Remove the last one from the list
+    val deleteAllMonkey = monkeyList.removeLast()
     // Show some feedback
-    println("Removing monkey: NAME HERE")
+    println(" Removing Monkey: $deleteAllMonkey")
+
+
+    // Show some feedback
+
 }
 
